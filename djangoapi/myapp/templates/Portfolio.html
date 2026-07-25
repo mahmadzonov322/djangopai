@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load portfolio_filters %}
+
+{% block title %}Portfolio - Gaming LAB{% endblock %}
+
+{% block content %}
+<section class="portfolio-section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Bizning <span class="highlight">O'yinlar</span></h1>
+            <p>Biz yaratgan eng yaxshi loyihalar</p>
+        </div>
+
+        <div class="games-grid">
+            {% for project in projects %}
+            <div class="game-card">
+                <div class="game-image">
+                    {% if project.rasmmi %}
+                        <img src="{{ project.rasmmi.url }}" alt="{{ project.nomi }}">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.jpg' %}" alt="Placeholder">
+                    {% endif %}
+                    <div class="overlay">
+                        <span class="category-badge">{{ project.category }}</span>
+                    </div>
+                </div>
+                
+                <div class="game-info">
+                    <h3>{{ project.nomi }}</h3>
+                    <p class="description">{{ project.description|truncatechars:140 }}</p>
+                    
+                    <div class="tech-tags">
+                        {% for tech in project.texnologiya|split %}
+                            <span class="tag">{{ tech|strip }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <a href="{% url 'index' %}" class="view-project-btn">Loyihani ko'rish →</a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty-state">
+                <h3>Hozircha loyihalar yo'q</h3>
+                <p>Admin paneldan yangi o'yin loyihalarini qo'shing.</p>
+            </div>
+            {% endfor %}    
+        </div>
+    </div>
+</section>
+
+<style>
+.portfolio-section {
+    padding: 120px 0;
+    background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-header h1 {
+    font-size: 52px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, #fff, #FA9021);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.highlight {
+    color: #FA9021;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 35px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.game-card {
+    background: #16161e;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #222;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(250, 144, 33, 0.25);
+    border-color: #FA9021;
+}
+
+.game-image {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+}
+
+.game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.game-card:hover .game-image img {
+    transform: scale(1.12);
+}
+
+.overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.category-badge {
+    background: rgba(250, 144, 33, 0.95);
+    color: black;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.game-info {
+    padding: 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-info h3 {
+    font-size: 26px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.description {
+    color: #bbb;
+    line-height: 1.65;
+    margin-bottom: 24px;
+    flex: 1;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.tag {
+    background: #1f1f2e;
+    color: #aaa;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    border: 1px solid #333;
+}
+
+.view-project-btn {
+    margin-top: auto;
+    color: #FA9021;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.view-project-btn:hover {
+    color: white;
+    gap: 12px;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,565 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <!-- Left Sidebar -->
+
+    <div id="left-sidebar"></div>
+
+    <!-- ================= NAVBAR ================= -->
+
+        <!-- <header class="header">
+
+            <div class="container">
+
+                <nav class="navbar">
+
+                    <div class="logo">
+                        <a href="{% url 'index' %}">LOGO</a>
+                    </div>
+
+                    <ul class="menu">
+
+                        <li><a href="{% url 'index' %}">Home</a></li>
+
+                        <li><a href="{% url 'about' %}">About us</a></li>
+
+                        <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+
+                        <li><a href="{% url 'news' %}">News</a></li>
+                           <li> <a href="{% url 'register' %}"
+                            class="{% if request.resolver_match.url_name == 'register' %}is-active{% endif %}">
+                                Register
+                            </a></li>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'logout' %}" class="navbar__cta">
+                                Logout
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'login' %}" class="navbar__cta">
+                                Login
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    </ul>
+
+                    <div id="authButtons"></div>
+
+                </nav>
+
+        </div>
+        </header> -->
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="container hero-wrapper">
+
+            <div class="hero-left">
+
+                <span class="top-text">
+                    3D game Dev
+                </span>
+
+                <h1>
+                    Work that we produce for our clients
+                </h1>
+
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard.
+                </p>
+
+                <a href="#" class="hero-btn">
+                    Get more details
+                </a>
+
+            </div>
+
+            <div class="hero-right">
+
+                <img src="{% static 'admin/img/jossy.png' %}" alt="Hero">
+
+                <div class="badge badge1">
+                    <h3>90+</h3>
+                    <span>Clients</span>
+                </div>
+
+                <div class="badge badge2">
+                    <h3>40+</h3>
+                    <span>Projects</span>
+                </div>
+
+                <div class="badge badge3">
+                    <h3>50+</h3>
+                    <span>Countries</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+        <!-- ================= Trending ================= -->
+
+    <section class="trending">
+
+<!-- Currently Trending Games -->
+<!-- Currently Trending Games -->
+        <div class="trending-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Currently Trending Games</h2>
+                    <a href="{% url 'portfolio' %}" class="see-all">SEE ALL →</a>
+                </div>
+
+                <div class="trending-slider" id="trendingSlider">
+                    {% for game in trending_games %}
+                    <div class="trending-card">
+                        <div class="game-image">
+                            {% if game.rasmi %}
+                                <img src="{{ game.rasmi.url }}" alt="{{ game.nomi }}">
+                            {% else %}
+                                <img src="{% static 'images/default-game.jpg' %}" alt="Game">
+                            {% endif %}
+                        </div>
+                        <div class="game-info">
+                            <h3>{{ game.nomi }}</h3>
+                            <p class="category">{{ game.categoriya }}</p>
+                            
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>Admin paneldan "Trending O'yinlar" bo'limiga o'yin qo'shing.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about">
+
+        <div class="container">
+
+            <div class="about-content">
+
+                <div class="about-image">
+                    <img src="{% static 'admin/img/ghost.png' %}" alt="Ghost">
+                </div>
+
+                <div class="about-text">
+
+                    <h2>Lorem ipsum is simply dummy text.</h2>
+
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the industry's
+                        standard dummy text ever since the 1500s.
+                    </p>
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Aspernatur, consequatur. Lorem ipsum dolor sit amet.
+                    </p>
+
+                    <a href="#" class="read-btn">
+                        Read More
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ================= VIDEO SECTION ================= -->
+
+    <section class="video-section">
+
+        <div class="container">
+
+            <div class="video-wrapper">
+
+                <div class="video-image">
+                    <video autoplay loop muted playsinline>
+                        <source src="{% static 'admin/img/video.mp4' %}" type="video/mp4">
+                    </video>
+
+                    <!-- <div class="play-btn">
+                        ▶
+                    </div> -->
+
+                </div>
+
+                <div class="video-content">
+
+                    <h2>
+                        Lorem ipsum is simply dummy text.
+                    </h2>
+
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry.
+                    </p>
+
+                    <ul>
+
+                        <li>✔ Lorem Ipsum</li>
+
+                        <li>✔ Simply dummy text</li>
+
+                        <li>✔ Printing industry</li>
+
+                        <li>✔ Standard text</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ================= PROJECTS ================= -->
+
+    <section class="projects">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Our Recent Projects</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <img src="{% static 'admin/img/image1.jpg' %}" alt="">
+                </div>
+
+                <div class="project-card">
+                    <img src="{% static 'admin/img/image2.jpg' %}" alt="">  
+                </div>
+
+                <div class="project-card">
+                    <img src="{% static 'admin/img/image3.jpg' %}" alt="">
+                </div>
+
+                <div class="project-card">
+                    <img src="{% static 'admin/img/image4.jpg' %}" alt="">
+                </div>
+
+                <div class="project-card">
+                    <img src="{% static 'admin/img/image5.jpg' %}" alt="">
+                </div>
+
+                <div class="project-card">
+                    <img src="{% static 'admin/img/image6.jpg' %}" alt="">
+                </div>
+
+            </div>
+
+            <div class="project-btn">
+                <a href="#">SEE ALL</a>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ================= MAP ================= -->
+
+    <section class="map-section">
+
+        <div class="container">
+
+            <div class="map-title">
+
+                <h2>Lorem Ipsum is simply dummy text of the printing.</h2>
+
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                </p>
+
+            </div>
+
+            <div class="world-map">
+
+                <img src="{% static 'admin/img/world-map.png' %}" alt="World Map">
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ================= TESTIMONIAL ================= -->
+
+    <section class="testimonial">
+
+        <div class="container">
+
+            <div class="testimonial-title">
+
+                <h2>Trusted by Thousands of Happy Customers</h2>
+
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                </p>
+
+            </div>
+
+            <div class="testimonial-wrapper">
+
+                <div class="testimonial-card active">
+
+                    <div class="user">
+
+                        <img src="{% static 'admin/img/user1.png' %}" alt="">
+
+                        <div>
+                            <h4>Viezh Robert</h4>
+                            <span>Warsaw, Poland</span>
+                        </div>
+
+                        <strong>⭐ 4.5</strong>
+
+                    </div>
+
+                    <p>
+                        "Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the industry's
+                        standard dummy text ever since the 1500s."
+                    </p>
+
+                </div>
+
+                <div class="testimonial-card">
+
+                    <div class="user">
+
+                        <img src="{% static 'admin/img/user2.png' %}" alt="">
+
+                        <div>
+                            <h4>Yessica Christy</h4>
+                            <span>Shanxi, China</span>
+                        </div>
+
+                        <strong>⭐ 4.5</strong>
+
+                    </div>
+
+                    <p>
+                        "Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry."
+                    </p>
+
+                </div>
+
+                <div class="testimonial-card">
+
+                    <div class="user">
+
+                        <img src="{% static 'admin/img/user3.png' %}" alt="">
+
+                        <div>
+                            <h4>Kim Young Jou</h4>
+                            <span>Seoul, Korea</span>
+                        </div>
+
+                        <strong>⭐ 4.5</strong>
+
+                    </div>
+
+                    <p>
+                        "Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry."
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-top">
+
+            <div class="footer-logo">
+
+                <h2>Gaming <span>LAB</span></h2>
+
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing
+                    and typesetting industry.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>About us</h3>
+
+                <ul>
+
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h3>Contact us</h3>
+
+                <p>
+                    Lorem Ipsum is simply dummy text.
+                </p>
+
+                <a href="#">
+                    +998 33 637 22 02
+                </a>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+
+            <p>
+                Copyright © 2025 Gaming LAB. All rights reserved.
+            </p>
+
+            <div class="social">
+
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-telegram"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+<style>
+.trending-section {
+    padding: 80px 0;
+    background: #0a0a0a;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 42px;
+    color: white;
+}
+
+.see-all {
+    color: #FA9021;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.trending-slider {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.trending-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.trending-card {
+    min-width: 320px;
+    background: #111;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.trending-card:hover {
+    transform: scale(1.05);
+}
+
+.game-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.game-info {
+    padding: 18px;
+}
+
+.game-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+}
+
+.category {
+    color: #FA9021;
+    font-size: 15px;
+}
+
+.followers {
+    margin-top: 12px;
+    color: #aaa;
+    font-size: 15px;
+}
+</style>
+
+<script>
+// Avtomatik aylanish
+const slider = document.getElementById('trendingSlider');
+let scrollAmount = 0;
+
+setInterval(() => {
+    scrollAmount += 345; // bitta kartaning kengligi + gap
+    if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
+        scrollAmount = 0;
+    }
+    slider.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+    });
+}, 3000); // har 3 sekundda aylantiradi
+</script>
+{% endblock %}

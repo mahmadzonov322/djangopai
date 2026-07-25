@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Biz Haqimizda - Gaming LAB{% endblock %}
+
+{% block content %}
+    <div class="about-container">
+        <div class="about-header">
+            <h1>Biz Haqimizda</h1>
+            <p class="lead">Gaming LAB — O'yin ixlosmandlari uchun eng yaxshi joy!</p>
+        </div>
+
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Salom, gamerlar! 👾</h2>
+                <p>
+                    <strong>Gaming LAB</strong> — bu shunchaki oddiy o'yin do'koni emas. 
+                    Bu yerda siz o'zingiz xohlagan barcha turdagi o'yinlarni topishingiz mumkin.
+                </p>
+                <p>
+                    Bizning sayt o'yin markazi bo'lib, siz bu yerda eng yangi, eng qiziqarli 
+                    va sifatli o'yinlarni qulay narxlarda topasiz.
+                </p>
+
+                <h3>Nima uchun bizni tanlaysiz?</h3>
+                <ul class="about-features">
+                    <li>✅ Eng so'nggi va klassik o'yinlarning katta kutubxonasi</li>
+                    <li>✅ Yuqori sifatli rasmlar va batafsil tavsiflar</li>
+                    <li>✅ Qulay narxlar va tez yetkazib berish</li>
+                    <li>✅ Foydalanuvchilar uchun qulay savat tizimi</li>
+                    <li>✅ Doimiy yangilanib turuvchi katalog</li>
+                </ul>
+
+                <p>
+                    Bizning maqsadimiz — har bir o'yinchi o'ziga mos keladigan o'yinni 
+                    osongina topishi va zavqlanishi. Sizning vaqtingiz va pulingizni qadrlaymiz!
+                </p>
+            </div>
+
+            <div class="about-image">
+                <img src="{% static 'admin/img/jossy.png' %}" alt="Gaming LAB" class="img-fluid rounded">
+                <!-- Agar rasm yo'q bo'lsa, quyidagi placeholderdan foydalaning -->
+                <!-- <img src="https://source.unsplash.com/random/800x600/?gaming" alt="Gaming LAB"> -->
+            </div>
+        </div>
+
+        <div class="about-mission">
+            <h3>Bizning Missiyamiz</h3>
+            <p>
+                O'yin dunyosini har kimga yaqinlashtirish, yangi avlod gamerlarni qo'llab-quvvatlash 
+                va o'yin sanoatining rivojlanishiga hissa qo'shish.
+            </p>
+        </div>
+    </div>
+
+    <style>
+        .about-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .about-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .about-header h1 {
+            font-size: 3rem;
+            color: #ff3366;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-features {
+            list-style: none;
+            padding: 0;
+        }
+        .about-features li {
+            margin: 12px 0;
+            font-size: 1.1rem;
+        }
+        .about-mission {
+            margin-top: 60px;
+            padding: 30px;
+            background: #1a1a2e;
+            border-radius: 10px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+{% endblock %} 

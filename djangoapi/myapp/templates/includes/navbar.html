@@ -1,0 +1,48 @@
+
+{% load static %}
+<header class="header">
+
+    <div class="container">
+
+        <nav class="navbar">
+
+        <div class="logo">
+            <a href="{% url 'index' %}">LOGO</a>
+        </div>
+
+                               <ul class="menu">
+
+                        <li><a href="{% url 'index' %}">Home</a></li>
+
+                        <li><a href="{% url 'about' %}">About us</a></li>
+
+                        <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+
+                        <li><a href="{% url 'news' %}">News</a></li>
+                           <li> <a href="{% url 'register' %}"
+                            class="{% if request.resolver_match.url_name == 'register' %}is-active{% endif %}">
+                                Register
+                            </a></li>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'logout' %}" class="navbar__cta">
+                                Logout
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'login' %}" class="navbar__cta">
+                                Login
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    </ul>
+
+            
+
+        </nav>
+
+    </div>
+<script src="{% static 'admin/js/scripts.js' %}"></script>
+</header>

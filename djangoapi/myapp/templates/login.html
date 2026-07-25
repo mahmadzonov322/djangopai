@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Kirish{% endblock %}
+
+{% block content %}
+<section class="auth">
+    <div class="auth__card">
+        <span class="about__panel-tag">&#9656; Tizimga kirish</span>
+        <h1 class="auth__title">Login</h1>
+        <p class="auth__subtitle">Hisobingiz mavjud bo'lsa, login va parolingizni kiriting.</p>
+
+        <form action="" method="POST" class="auth__form">
+            {% csrf_token %}
+            <label>
+                Username
+                <input type="text" name="username" placeholder="Username" required>
+            </label>
+            <label>
+                Parol
+                <input type="password" name="password" placeholder="Parol" required>
+            </label>
+            {{ form.as_p }}
+            <button type="submit" class="game-card__btn auth__submit">Log in <span>&rarr;</span></button>
+        </form>
+
+        <p class="auth__hint">Hisobingiz yo'q bo'lsa, <a href="{% url 'register' %}">ro'yxatdan o'ting</a>.</p>
+    </div>
+</section>
+{% endblock %}

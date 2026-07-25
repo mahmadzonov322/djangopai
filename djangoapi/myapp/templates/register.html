@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Ro'yxatdan o'tish{% endblock %}
+
+{% block content %}
+<section class="auth">
+    <div class="auth__card">
+        <span class="about__panel-tag">&#9656; Yangi hisob</span>
+        <h1 class="auth__title">Ro'yxatdan o'tish</h1>
+        <p class="auth__subtitle">Saytdan to'liq foydalanish uchun hisob yarating.</p>
+
+        <form method="POST" class="auth__form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="game-card__btn auth__submit">Ro'yxatdan o'tish <span>&rarr;</span></button>
+        </form>
+
+        <p class="auth__hint">Hisobingiz bor bo'lsa, <a href="{% url 'login' %}">tizimga kiring</a>.</p>
+    </div>
+</section>
+{% endblock %}
